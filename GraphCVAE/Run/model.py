@@ -92,38 +92,40 @@ class GraphCVAEEncoder(nn.Module):
         self.disc = Discriminator(dim_output)
         self.read = AvgReadout()
         
-            # 添加用于调整残差维度的投影层
-        self.proj1 = nn.Linear(dim_input, hidden_dim1)  # 第一层的投影
-        self.proj2 = nn.Linear(hidden_dim1, hidden_dim2)  # 第二层的投影
-        self.proj3 = nn.Linear(hidden_dim2, hidden_dim3)
+        # Add projection layers to adjust the dimensions of the residuals
+        self.proj1 = nn.Linear(dim_input, hidden_dim1)  # Projection for the first layer
+        self.proj2 = nn.Linear(hidden_dim1, hidden_dim2)  # Projection for the second layer
+        self.proj3 = nn.Linear(hidden_dim2, hidden_dim3)  # Projection for the third layer
 
 
+    
     def encode(self, x, edge_index):
-        # 第一层加残差连接
-        h0 = self.proj1(x)  # 对原始输入x进行投影，使其维度与h匹配
+        # First layer with residual connection
+        h0 = self.proj1(x)  # Project the input x to match the dimension of h
         h = self.gcn_conv1(x, edge_index)
-        h = self.ln1(h) + h0  # 加上残差
+        h = self.ln1(h) + h0  # Add the residual
         h = F.elu(h)
-
-        # 第二层加残差连接
-        h0 = self.proj2(h)  # 对上一层的输出进行投影，使其维度与下一层的输出匹配
+    
+        # Second layer with residual connection
+        h0 = self.proj2(h)  # Project the output of the previous layer to match the dimension of the next layer's output
         h = self.gcn_conv2(h, edge_index)
-        h = self.ln2(h) + h0  # 加上残差
+        h = self.ln2(h) + h0  # Add the residual
         h = F.elu(h)
-
-        # 第三层加残差连接
-        h0 = self.proj3(h0)  # 对残差进行投影，使其维度与第三层的输出匹配
+    
+        # Third layer with residual connection
+        h0 = self.proj3(h0)  # Project the residual to match the dimension of the third layer's output
         h = self.gcn_conv3(h, edge_index)
-        h = self.ln3(h) + h0  # 加上残差
+        h = self.ln3(h) + h0  # Add the residual
         h = F.elu(h)
         
-        
+        # Compute mean and log variance for the Gaussian distribution
         mu = self.gcn_conv_mean(h, edge_index)
         mu = self.ln_mean(mu)
         logvar = self.gcn_conv_logvar(h, edge_index)
         logvar = self.ln_logvar(logvar)
-
+    
         return mu, logvar, h
+
     
     def reparameterize(self, mu, logvar):
         std = torch.exp(0.5 * logvar)
