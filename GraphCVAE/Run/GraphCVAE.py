@@ -162,19 +162,6 @@ class GraphCVAE():
         beta : float, optional
             Weight factor to control the influence of contrastive loss in representation learning. 
             The default is 1.
-        lamda1 : float, optional
-            Weight factor to control the influence of reconstruction loss in mapping matrix learning. 
-            The default is 10.
-        lamda2 : float, optional
-            Weight factor to control the influence of contrastive loss in mapping matrix learning. 
-            The default is 1.
-        deconvolution : bool, optional
-            Deconvolution task? The default is False.
-        datatype : string, optional    
-            Data type of input. Our model supports 10X Visium ('10X'), Stereo-seq ('Stereo'), and Slide-seq/Slide-seqV2 ('Slide') data. 
-        Returns
-        -------
-        The learned representation 'self.emb_rec'.
 
         '''
         self.adata = adata.copy()
