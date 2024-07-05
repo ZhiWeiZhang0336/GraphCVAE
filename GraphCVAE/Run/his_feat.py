@@ -20,6 +20,7 @@ import torch.nn
 import torchvision.models as models
 from torch.autograd import Variable 
 import torchvision.transforms as transforms
+torch.backends.cudnn.enabled = False
 
 
 class image_feature:
