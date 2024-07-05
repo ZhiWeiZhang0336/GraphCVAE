@@ -1,11 +1,4 @@
-#!/usr/bin/env python
-"""
-# Author: ChangXu
-# Created Time : Mon 23 Apr
-# File Name: cal_graph.py
-# Description:`
 
-"""
 
 import os,sys
 import numpy as np
