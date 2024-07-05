@@ -40,7 +40,7 @@ class image_feature:
         self.cnnType = cnnType
     def load_vit_model(self):
         vit_model = timm.create_model('vit_base_patch16_224', pretrained=False)
-        vit_model.load_state_dict(torch.load('/data/3/DeepST-main/deepst/vit_base_patch16_224.pth'))
+        vit_model.load_state_dict(torch.load('/data/3/vit_base_patch16_224.pth'))
         vit_model.to(self.device)
         vit_model.eval()
         return vit_model 
