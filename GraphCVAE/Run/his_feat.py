@@ -1,23 +1,4 @@
-#!/usr/bin/env python
-"""
-# Author: ChangXu
-# Created Time : Mon 23 Apr 2021 08:26:32 
-# File Name: his_feat.py
-# Description:`
 
-"""
-"""
-test:
-import scanpy as sc
-from integrated_feat import image_feature, image_crop
-data_path = "/home/xuchang/Project/STMAP/Human_breast/output/Breast_data/STMAP_Breast_15.h5ad"
-save_path = '/home/xuchang/Project/STMAP_Final/tiles'
-adata = sc.read(data_path)
-image_crop(adata, save_path)
-adata = image_feature(adata).extract_image_feat()
-
-
-"""
 import os
 import math
 import anndata
@@ -39,6 +20,7 @@ import torch.nn
 import torchvision.models as models
 from torch.autograd import Variable 
 import torchvision.transforms as transforms
+torch.backends.cudnn.enabled = False
 
 
 class image_feature:
@@ -58,7 +40,7 @@ class image_feature:
         self.cnnType = cnnType
     def load_vit_model(self):
         vit_model = timm.create_model('vit_base_patch16_224', pretrained=False)
-        vit_model.load_state_dict(torch.load('/data/3/DeepST-main/deepst/vit_base_patch16_224.pth'))
+        vit_model.load_state_dict(torch.load('/data/3/vit_base_patch16_224.pth'))
         vit_model.to(self.device)
         vit_model.eval()
         return vit_model 
