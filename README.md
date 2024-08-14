@@ -11,7 +11,7 @@ anndata == 0.8.0
 numpy == 1.22.3
 
 # install
-wget https://github.com/JiangBioLab/DeepST/archive/refs/heads/main.zip
+wget https://github.com/ZhiWeiZhang0336/GraphCVAE/archive/refs/heads/main.zip
 unzip main.zip
 cd /home/.../GraphCVAE  ### your own path
 conda create -n deepst_env python=3.9
