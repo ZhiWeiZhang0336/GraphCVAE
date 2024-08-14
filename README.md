@@ -17,9 +17,9 @@ unzip main.zip
 
 cd /home/.../GraphCVAE  ### your own path
 
-conda create -n deepst_env python=3.9
+conda create -n GraphCVAE_env python=3.9
 
-conda activate deepst_env
+conda activate GraphCVAE_env
 
 ## step1 Installing PyTorch’s CUDA support or CPU support on Linux
 pip3 install torch==1.13.0+cu116 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116  #### GPU
