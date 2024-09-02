@@ -10,10 +10,10 @@ scanpy == 1.9.2
 anndata == 0.8.0  
 numpy == 1.22.3
 rpy2 == 3.5.16
-matplotlib=3.7.2
+matplotlib==3.7.2
 tqdm==4.64.1   
-scikit-learn=1.1.3
-R=4.3.3
+scikit-learn==1.1.3
+R==4.3.3
 
 # install
 wget https://github.com/ZhiWeiZhang0336/GraphCVAE/archive/refs/heads/main.zip
