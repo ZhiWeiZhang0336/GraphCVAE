@@ -15,6 +15,7 @@ tqdm == 4.64.1
 scikit-learn == 1.1.3  
 R == 4.3.3  
 
+
 # install
 wget https://github.com/ZhiWeiZhang0336/GraphCVAE/archive/refs/heads/main.zip
 
@@ -38,6 +39,18 @@ pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv t
 
 ## step3 Download other dependencies
 pip install -r requirements.txt
+
+pip install GraphCVAE
+
+or
+
+git clone https://github.com/ZhiWeiZhang0336/GraphCVAE.git
+
+cd GraphCVAE
+
+python setup.py build
+
+python setup.py install --user
 
 # Dataset
 1) DLPFC (Dorsolateral Prefrontal Cortex) Dataset: This dataset is accessible via the spatialLIBD platform at http://spatial.libd.org/spatialLIBD;
