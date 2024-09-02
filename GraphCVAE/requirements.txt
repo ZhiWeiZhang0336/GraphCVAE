@@ -4,7 +4,7 @@ bokeh==2.3.1
 h5py==3.8.0
 imageio==2.9.0   
 leidenalg==0.9.1
-matplotlib==3.7.0 
+matplotlib==3.7.2 
 numpy==1.23.5
 python-igraph==0.10.4
 python-louvain==0.15 
