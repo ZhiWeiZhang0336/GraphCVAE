@@ -37,8 +37,9 @@ pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv t
 
 pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv torch_geometric -f https://data.pyg.org/whl/torch-1.13.0+cpu.html  ### CPU
 
-## step3 Download other dependencies
+## step3 Download  dependencies
 pip install -r requirements.txt
+
 
 pip install GraphCVAE
 
@@ -58,3 +59,6 @@ python setup.py install --user
 2) Human Brain Cancer, Human Colon Cancer, Mouse Brain Datasets: These datasets are available for download from the 10X Genomics website at https://www.10xgenomics.com/datasets ;
    
 3) Mouse Embryo Dataset: This dataset can be accessed through the China National GeneBank's Stomics platform at https://db.cngb.org/stomics/mosta .
+
+# Tutorial
+A Jupyter Notebook of the tutorial is accessible from :
