@@ -62,3 +62,4 @@ python setup.py install --user
 
 # Tutorial
 A Jupyter Notebook of the tutorial is accessible from :
+https://github.com/ZhiWeiZhang0336/GraphCVAE/blob/main/tutorial/DLPFC.ipynb
