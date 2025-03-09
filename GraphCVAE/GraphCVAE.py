@@ -246,7 +246,6 @@ class GraphCVAE():
         if self.datatype in ['Stereo', 'Slide']:
            self.model = GraphCVAEEncoder(self.dim_input, self.dim_output, edge_index).to(self.device)
         else:
-            
             self.model = GraphCVAEEncoder(self.dim_input, self.dim_output, edge_index).to(self.device)
         self.loss_CSL = nn.BCEWithLogitsLoss()
         # self.loss_CSL = nn.CrossEntropyLoss()
@@ -293,10 +292,10 @@ class GraphCVAE():
                 return self.emb_rec
              else:  
                 if self.datatype in ['Stereo', 'Slide']:
-                   self.emb_rec = self.model(self.features, self.features_a)[1]
+                   self.emb_rec = self.model(self.features, self.features_a)[3]
                    self.emb_rec = F.normalize(self.emb_rec, p=2, dim=1).detach().cpu().numpy() 
                 else:
-                   self.emb_rec = self.model(self.features, self.features_a)[1].detach().cpu().numpy()
+                   self.emb_rec = self.model(self.features, self.features_a)[3].detach().cpu().numpy()
                 self.adata.obsm['emb'] = self.emb_rec
                 
                 return self.adata
